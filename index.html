@@ -3,13 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EMI Calculator</title>
+  <title>EMI Calculator - Calculate Loan, Interest & Payment</title>
+  <meta name="description" content="Free EMI Calculator to calculate loan EMI, total interest, and payment. Simple, fast, and mobile-friendly tool with print, share, and AdSense support.">
   <link rel="stylesheet" href="style.css">
+
+  <!-- ✅ Google AdSense (replace YOUR_ADSENSE_CLIENT_ID with your ID) -->
+  <script async 
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=YOUR_ADSENSE_CLIENT_ID"
+    crossorigin="anonymous"></script>
 </head>
+
 <body>
   <div class="container">
     <h1>💰 EMI Calculator</h1>
 
+    <!-- Input Fields -->
     <div class="input-box">
       <label>Loan Amount (₹)</label>
       <input type="number" id="loan" placeholder="Enter loan amount">
@@ -27,14 +35,44 @@
 
     <button onclick="calculateEMI()">Calculate EMI</button>
 
+    <!-- Result Section -->
     <div id="result"></div>
+
+    <!-- ✅ Print & Share Buttons -->
+    <div class="actions">
+      <button id="printBtn">🖨️ Print Result</button>
+      <button id="shareBtn">📤 Share Result</button>
+    </div>
   </div>
 
-  <!-- Ad Section -->
+  <!-- ✅ AdSense Ad Box -->
   <div class="ad-box">
     <p>Advertisement</p>
-    <img src="https://via.placeholder.com/468x60?text=Your+Ad+Here" alt="Ad Banner">
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="YOUR_ADSENSE_CLIENT_ID"
+        data-ad-slot="1234567890"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
+
+  <!-- ✅ Footer Section -->
+  <footer>
+    <p>
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms & Conditions</a> |
+      <a href="contact.html">Contact</a>
+    </p>
+
+    <!-- 🔗 Social Links -->
+    <p>Follow us: 
+      <a href="https://www.instagram.com/yashwa_ntlifestyle?igsh=Mm5lZjdianhvZ2hh iska vs code ke liye link bana do" target="_blank" rel="noopener">Instagram</a> |
+      <a href="https://youtube.com/@gameplayer-oo7mw?si=T2af1mng-ZD3VLsc" target="_blank" rel="noopener">YouTube</a>
+    </p>
+
+    <p>© 2025 EMI Calculator | All Rights Reserved</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
