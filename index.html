@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMI Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>💰 EMI Calculator</h1>
+
+    <div class="input-box">
+      <label>Loan Amount (₹)</label>
+      <input type="number" id="loan" placeholder="Enter loan amount">
+    </div>
+
+    <div class="input-box">
+      <label>Interest Rate (%)</label>
+      <input type="number" id="rate" placeholder="Enter annual interest rate">
+    </div>
+
+    <div class="input-box">
+      <label>Loan Tenure (Months)</label>
+      <input type="number" id="months" placeholder="Enter number of months">
+    </div>
+
+    <button onclick="calculateEMI()">Calculate EMI</button>
+
+    <div id="result"></div>
+  </div>
+
+  <!-- Ad Section -->
+  <div class="ad-box">
+    <p>Advertisement</p>
+    <img src="https://via.placeholder.com/468x60?text=Your+Ad+Here" alt="Ad Banner">
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
