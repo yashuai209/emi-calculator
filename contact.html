@@ -6,19 +6,135 @@
   <title>Contact Us - EMI Calculator</title>
   <link rel="stylesheet" href="style.css">
 
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxx"
+  <!-- ✅ Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5389244190027326"
       crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9fafc;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    nav {
+      background: #e9ecef;
+      text-align: center;
+      padding: 10px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #007BFF;
+      margin: 0 10px;
+    }
+    .container {
+      max-width: 700px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #007BFF;
+      text-align: center;
+    }
+    p {
+      line-height: 1.6;
+    }
+    form {
+      margin-top: 20px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+    button {
+      background: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      color: #007BFF;
+      text-decoration: none;
+    }
+    footer {
+      background: #007BFF;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 
 <body>
+  <!-- ✅ Navigation Bar -->
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="about.html">About</a> |
+    <a href="privacy.html">Privacy Policy</a> |
+    <a href="terms.html">Terms</a> |
+    <a href="loan-tips.html">Loan Tips</a> |
+    <a href="contact.html">Contact</a>
+  </nav>
+
   <div class="container">
     <h1>Contact Us</h1>
-    <p>If you have any questions or suggestions, feel free to contact us:</p>
+    <p>Have a question, feedback, or suggestion about our EMI Calculator or financial tools?  
+       We’d love to hear from you! Fill out the form below or reach us directly at the email provided.</p>
 
-    <p><b>Email:</b> yashwantkhutte4@gmail.com</p>
+    <form onsubmit="event.preventDefault(); alert('Thank you! We’ll get back to you soon.');">
+      <label>Your Name:</label>
+      <input type="text" placeholder="Enter your name" required>
+
+      <label>Your Email:</label>
+      <input type="email" placeholder="Enter your email" required>
+
+      <label>Your Message:</label>
+      <textarea rows="5" placeholder="Write your message here..." required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+
+    <p style="margin-top: 25px;">
+      <b>Email:</b> <a href="mailto:yashwantkhutte4@gmail.com">yashwantkhutte4@gmail.com</a><br>
+      <b>Address:</b> Raipur, Chhattisgarh, India<br>
+      <b>Support Hours:</b> Monday–Friday, 10:00 AM – 6:00 PM
+    </p>
 
     <a href="index.html" class="btn">← Back to Home</a>
   </div>
+
+  <!-- ✅ AdSense Ad Block -->
+  <div class="ads-container" style="margin: 30px auto; text-align:center;">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-5389244190027326"
+         data-ad-slot="5026999967"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
+  <footer>
+    <p>© 2025 EMI Calculator | All Rights Reserved</p>
+  </footer>
 </body>
 </html>
