@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,11 +20,6 @@
     }
     h1 {
       color: #333;
-    }
-    .search-box {
-      flex: 1;
-      display: flex;
-      justify-content: flex-end;
     }
     .search-box input {
       padding: 10px;
@@ -81,14 +76,8 @@
       border-radius: 6px;
       cursor: pointer;
     }
-    .edit-btn {
-      background: #ffc107;
-      color: white;
-    }
-    .delete-btn {
-      background: #dc3545;
-      color: white;
-    }
+    .edit-btn { background: #ffc107; color: white; }
+    .delete-btn { background: #dc3545; color: white; }
     .modal {
       position: fixed;
       top: 0; left: 0;
@@ -112,14 +101,6 @@
       border: 1px solid #ccc;
       border-radius: 6px;
     }
-    .modal-content button {
-      padding: 10px 16px;
-      border: none;
-      border-radius: 6px;
-      background: #007bff;
-      color: white;
-      cursor: pointer;
-    }
   </style>
 </head>
 <body>
@@ -133,7 +114,6 @@
 
   <div class="news-container" id="newsContainer"></div>
 
-  <!-- Modal -->
   <div class="modal" id="newsModal">
     <div class="modal-content">
       <h3 id="modalTitle">Create News</h3>
@@ -154,25 +134,36 @@
     const modalTitle = document.getElementById('modalTitle');
     const newsImage = document.getElementById('newsImage');
     const searchInput = document.getElementById('searchInput');
-
     let editIndex = null;
 
+    const defaultNews = [
+      { title: "RBI ने ब्याज दरों को स्थिर रखा", description: "भारतीय रिज़र्व बैंक (RBI) ने रेपो रेट को 6.5% पर बरकरार रखा है। इससे लोन और EMI भुगतान पर कोई असर नहीं पड़ेगा।", image: "" },
+      { title: "Personal Loan पर ब्याज दरें हुईं कम", description: "कई निजी बैंकों ने पर्सनल लोन पर ब्याज दरें घटा दी हैं। SBI, HDFC और ICICI अब 9.5% तक की दर पर लोन दे रहे हैं।", image: "" },
+      { title: "Home Loan के लिए डिजिटल वेरिफिकेशन सिस्टम शुरू", description: "सरकार ने Digital Property Verification सिस्टम शुरू किया जिससे फर्जी प्रॉपर्टी डील्स पर रोक लगेगी।", image: "" },
+      { title: "Credit Card EMI पर लग सकता है नया नियम", description: "RBI अब EMI ट्रांजेक्शन पर नई गाइडलाइन लाने जा रहा है ताकि ब्याज दरें पहले से स्पष्ट हों।", image: "" },
+      { title: "Mutual Fund SIP में रिकॉर्ड निवेश", description: "अक्टूबर में भारतीय निवेशकों ने ₹20,000 करोड़ से अधिक SIP में निवेश किया। यह अब तक का सबसे बड़ा आंकड़ा है।", image: "" },
+      { title: "Gold Prices Drop Again", description: "सोने की कीमत ₹65,200 से घटकर ₹64,750 हुई। डॉलर की मजबूती और ब्याज दरों की उम्मीद कारण बने।", image: "" },
+      { title: "Why India Needs a Low-Tariff Trade Deal with the US", description: "भारत और अमेरिका के बीच व्यापारिक संबंध मजबूत करने का यह सही समय है। लो-टैरिफ डील से कई सेक्टरों को फायदा होगा।", image: "" },
+      { title: "Sensex और Nifty लाल निशान में खुले", description: "Sensex 252 अंक गिरा और Nifty50 50 अंक फिसला। private banks में कमजोरी से बाजार दबाव में।", image: "" },
+      { title: "HNI India अब बना Kokuyo Workplace India", description: "कंपनी ने 2030 तक एशिया में वर्कप्लेस सॉल्यूशंस में लीडर बनने का लक्ष्य रखा है।", image: "" }
+    ];
+
     function loadNews() {
-      const newsList = JSON.parse(localStorage.getItem('financialNews')) || [];
+      let newsList = JSON.parse(localStorage.getItem('financialNews'));
+      if (!newsList || newsList.length === 0) {
+        localStorage.setItem('financialNews', JSON.stringify(defaultNews));
+        newsList = defaultNews;
+      }
       displayNews(newsList);
     }
 
     function displayNews(newsList) {
       newsContainer.innerHTML = '';
-      if (newsList.length === 0) {
-        newsContainer.innerHTML = '<p>No news found.</p>';
-        return;
-      }
       newsList.forEach((news, index) => {
         const card = document.createElement('div');
         card.classList.add('news-card');
         card.innerHTML = `
-          <img src="${news.image || 'https://via.placeholder.com/120x90'}" alt="News Image">
+          <img src="${news.image || 'https://via.placeholder.com/120x90'}" alt="News">
           <div class="news-content">
             <h2>${news.title}</h2>
             <p>${news.description}</p>
@@ -189,28 +180,23 @@
     function saveNews() {
       const title = newsTitle.value.trim();
       const description = newsDescription.value.trim();
-
+      const file = newsImage.files[0];
       if (!title || !description) return alert('Please fill all fields');
 
       const reader = new FileReader();
-      const file = newsImage.files[0];
-
-      reader.onloadend = function() {
+      reader.onloadend = () => {
         const imageUrl = file ? reader.result : '';
         const newsList = JSON.parse(localStorage.getItem('financialNews')) || [];
-
         if (editIndex !== null) {
           newsList[editIndex] = { title, description, image: imageUrl };
           editIndex = null;
         } else {
           newsList.push({ title, description, image: imageUrl });
         }
-
         localStorage.setItem('financialNews', JSON.stringify(newsList));
         closeModal();
         loadNews();
       };
-
       if (file) reader.readAsDataURL(file);
       else reader.onloadend();
     }
@@ -226,7 +212,7 @@
     }
 
     function deleteNews(index) {
-      if (confirm('Are you sure you want to delete this news?')) {
+      if (confirm('Delete this news?')) {
         const newsList = JSON.parse(localStorage.getItem('financialNews')) || [];
         newsList.splice(index, 1);
         localStorage.setItem('financialNews', JSON.stringify(newsList));
@@ -246,7 +232,6 @@
       newsModal.style.display = 'none';
     }
 
-    // 🔍 Search Function
     searchInput.addEventListener('input', () => {
       const query = searchInput.value.toLowerCase();
       const allNews = JSON.parse(localStorage.getItem('financialNews')) || [];
@@ -257,10 +242,9 @@
       displayNews(filtered);
     });
 
-    // Event Listeners
     addNewsBtn.addEventListener('click', openModal);
     saveNewsBtn.addEventListener('click', saveNews);
-    newsModal.addEventListener('click', (e) => {
+    newsModal.addEventListener('click', e => {
       if (e.target === newsModal) closeModal();
     });
 
